@@ -163,7 +163,7 @@ public class EventoController {
     @Operation(summary = "Actualizar un evento existente",
             description = "Reemplaza completamente las datos de un evento identificado por su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Evento actualizado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "200", description = "Evento actualizado con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
         @ApiResponse(responseCode = "404", description = "Evento no encontrada", content = @Content())
     })
@@ -221,7 +221,7 @@ public class EventoController {
     @Operation(summary = "Eliminar Evento por ID",
             description = "Elimina un evento  especifica del sistema")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Evento eliminado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "200", description = "Evento eliminado con éxito", content = @Content()),
         @ApiResponse(responseCode = "404", description = "Evento no encontrada", content = @Content())
     })
     // ***************************************************************************    
@@ -243,7 +243,8 @@ public class EventoController {
 
             Map<String, Object> map = new HashMap<>();
             map.put("mensaje", "Evento eliminado con éxito");
-            map.put("deletedEvento", existingEvento);
+           // map.put("deletedEvento", existingEvento);
+           
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }

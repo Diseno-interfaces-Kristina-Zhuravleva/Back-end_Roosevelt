@@ -99,13 +99,13 @@ CREATE TABLE IF NOT EXISTS lineas_rutas_fav(
 CREATE TABLE eventos (
     id_evento INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL, 
-    tipo_evento ENUM('hiking', 'marcha_nordica', 'montana_picnic') NOT NULL,
+    tipo_evento VARCHAR(255) NOT NULL,
     descripcion TEXT,
     fecha_evento TIMESTAMP NOT NULL,
     id_ruta INT,
     FOREIGN KEY (id_ruta) REFERENCES rutas(id)
 );
-
+--  tipo_evento ENUM('hiking', 'marcha_nordica', 'montana_picnic') NOT NULL,
 CREATE TABLE eventos_usuarios (
     id_evento INT,
     id_usuario INT,
