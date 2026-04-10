@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -83,9 +84,11 @@ public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "usuario_autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("usuario_autor")  
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Set<Ruta> misRutas = new HashSet<>();
 
     @ManyToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("usuarios") 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Set<Evento> eventos = new HashSet<>();
 }

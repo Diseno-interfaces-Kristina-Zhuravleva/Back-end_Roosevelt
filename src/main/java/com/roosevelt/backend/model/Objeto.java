@@ -15,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -77,8 +78,8 @@ public class Objeto implements Serializable {
     private String imagen;
 
     @Schema(description = "La peligrosidad del Objeto", example = "Amarillo")
-    @NotBlank(message = "La peligrosidad del Objeto es obligatorio")
-    @Size(min = 1, max = 20, message = "La peligrosidad del Objeto no puede tener más de 20 caracteres")
+    @NotNull(message = "La peligrosidad del Objeto es obligatorio")
+    //@Size(min = 1, max = 20, message = "La peligrosidad del Objeto no puede tener más de 20 caracteres")
     @Column(name = "peligrosidad", nullable = false, unique = false)
     private PeligrosidadEnum peligrosidad;
 

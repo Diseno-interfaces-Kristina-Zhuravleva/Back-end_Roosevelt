@@ -70,7 +70,7 @@ INSERT INTO lineas_rutas_fav (id_usuario, id_ruta) VALUES (1, 2);
 INSERT INTO eventos (titulo, tipo_evento, descripcion, fecha_evento, id_ruta) VALUES 
 ('Exploración del Castillo de Santa Barbara', 'hiking', 'Ruta para conocer los alrededores del Castillo Santa Barbara.', '2026-04-20 09:00:00', 1),
 ('Marcha Saludable San Fernando', 'marcha_nordica', 'Actividad grupal de marcha nórdica por el Castillo San Fernando.', '2026-04-22 10:30:00', 2),
-('Picnic en la Cima', 'montana_picnic', 'Subida suave y picnic grupal al finalizar.', '2026-04-25 12:00:00', 3);
+('Picnic en la cima', 'montana_picnic', 'Subida suave y picnic grupal al finalizar.', '2026-04-25 12:00:00', 3);
 
 ALTER TABLE eventos ALTER COLUMN id_evento RESTART WITH (SELECT COALESCE(MAX(id_evento), 0) + 1 FROM eventos);
 

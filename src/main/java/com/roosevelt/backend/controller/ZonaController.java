@@ -198,7 +198,7 @@ public class ZonaController {
     @Operation(summary = "Actualizar una Zona existente",
             description = "Reemplaza completamente los datos de una Zona identificada por su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Zona actualizada con éxito", content = @Content()),
+        @ApiResponse(responseCode = "200", description = "Zona actualizada con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
         @ApiResponse(responseCode = "404", description = "Zona no encontrada", content = @Content())
     })

@@ -79,7 +79,7 @@ public class Ruta implements Serializable{
 
     @Schema(description = "La cantidad de likes", example = "0")
     @NotNull(message = "La cantidad de likes es obligatoria")
-    @Column(name = "likes_count", nullable = false, unique = true) 
+    @Column(name = "likes_count", nullable = false, unique = false) 
     private Integer likesCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -89,11 +89,12 @@ public class Ruta implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario_autor", referencedColumnName = "id")
-    @JsonIgnoreProperties("rutas")  
+    
+    @JsonIgnoreProperties({"misRutas", "eventos", "password"}) // para contrasena  
     private Usuario usuario_autor;
 
    
     @OneToMany(mappedBy = "ruta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("ruta")
+    @JsonIgnoreProperties({"eventos", "misRutas", "zona", "rutas"})
     private List<Evento> eventos = new ArrayList<>();
 }

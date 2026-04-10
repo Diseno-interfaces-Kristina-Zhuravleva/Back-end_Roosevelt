@@ -86,7 +86,7 @@ public class Evento implements Serializable {
     @JsonProperty("descripcion")
     private String descripcion;
 
-    @Schema(description = "fecha del evento", example = "11.08.2026")
+    @Schema(description = "fecha del evento", example = "2026-11-08T12:00:00")
     @Column(name = "fecha_evento")
     @NotNull
     @JsonProperty("fechaEvento")
@@ -98,7 +98,10 @@ public class Evento implements Serializable {
     @JsonIgnoreProperties("eventos")
     private Ruta ruta;
 
+    //joincolumn- relacion con otra tabla 
+
     @ManyToMany(fetch = FetchType.LAZY)
+    //// Nombre de la tabla intermedia , Columna para la clave foránea de evento, Columna para la clave foránea de usuario
     @JoinTable(name = "eventos_usuarios", joinColumns = @JoinColumn(name = "id_evento"), inverseJoinColumns = @JoinColumn(name = "id_usuario"))
     @JsonIgnoreProperties("eventos")
     private Set<Usuario> usuarios = new HashSet<>();

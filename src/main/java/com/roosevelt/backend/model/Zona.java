@@ -10,6 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -62,12 +65,15 @@ public class Zona implements Serializable{
     private String mapbox_json;
 
     @Schema(description = "La peligrosidad de la Zona", example = "Verde")
-    @NotBlank(message = "La peligrosidad nombre de la Zona es obligatorio")
-    @Size(min=1, max=20, message = "La peligrosidad de la Zona no puede tener más de 20 caracteres")
+    @NotNull(message = "La peligrosidad nombre de la Zona es obligatorio")
+    //@Size(min=1, max=20, message = "La peligrosidad de la Zona no puede tener más de 20 caracteres")
+    
     @Column(name = "peligrosidad", nullable = false, unique = false) 
     private PeligrosidadEnum peligrosidad;
 
     @OneToMany(mappedBy = "zona", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("zona")  
+    //@JsonIgnoreProperties("zona")  
+    @JsonIgnoreProperties({"zona", "eventos", "usuario_autor"}) 
+    //private List<Ruta> rutas;
     private Set<Ruta> rutas = new HashSet<>();
 }
