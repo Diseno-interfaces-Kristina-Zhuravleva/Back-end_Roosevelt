@@ -233,33 +233,35 @@ public class UsuarioController {
     @Operation(summary = "Eliminar usuario por ID",
             description = "Elimina un usuario específico del sistema")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Usuario eliminado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "200", description = "Usuario eliminado con éxito", content = @Content()),
         @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
     })
     // ***************************************************************************    
     
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deleteusuario(@PathVariable Integer id) {
+@DeleteMapping("/{id}")
+public ResponseEntity<Map<String, Object>> deleteusuario(@PathVariable Integer id) {
 
-        ResponseEntity<Map<String, Object>> response;
-
-        Usuario existingusuario = usuarioService.findById(id);
+    ResponseEntity<Map<String, Object>> response;
+    try {
         if (existingusuario == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "Usuario no encontrado");
             map.put("id", id);
 
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
+            return response;
         } else {
-
             usuarioService.deleteById(id);
 
             Map<String, Object> map = new HashMap<>();
             map.put("mensaje", "Usuario eliminado con éxito");
-            map.put("deletedusuario", existingusuario);
-
-            response = ResponseEntity.status(HttpStatus.OK).body(map);
+            //map.put("deletedusuario", existingusuario);
+            return ResponseEntity.ok(map);
         }
-        return response;
+    } catch (Exception e) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("error", "No se puede eliminar: el usuario tiene datos vinculados");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(map);
     }
+}
 }
