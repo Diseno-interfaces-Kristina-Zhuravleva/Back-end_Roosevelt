@@ -242,8 +242,9 @@ public class UsuarioController {
 public ResponseEntity<Map<String, Object>> deleteusuario(@PathVariable Integer id) {
 
     ResponseEntity<Map<String, Object>> response;
+     Usuario existingUsuario = usuarioService.findById(id);
     try {
-        if (existingusuario == null) {
+        if (existingUsuario == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "Usuario no encontrado");
             map.put("id", id);

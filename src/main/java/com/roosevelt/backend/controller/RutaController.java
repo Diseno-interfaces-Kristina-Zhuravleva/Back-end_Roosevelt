@@ -208,7 +208,7 @@ public class RutaController {
                     || ruta.getDescripcion() == null || ruta.getDescripcion().trim().isEmpty()
                     || ruta.getMapboxJSON() == null || ruta.getMapboxJSON().trim().isEmpty()
                     || ruta.getFecha_pub() == null
-                    || ruta.getLikesCount() <= 0
+                    || ruta.getLikesCount() < 0
                     || ruta.getZona() == null
                     || ruta.getUsuario_autor() == null
                     ) {
