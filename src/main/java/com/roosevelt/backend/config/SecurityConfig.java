@@ -77,14 +77,17 @@ public class SecurityConfig {
                         .requestMatchers("/api/zonas/**").hasRole("ADMIN")
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/mensajes/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/mensajes/**").hasRole("ADMIN")
                         // Para "Rutas Favoritas" (AppRouter: /fav-routes)
                         .requestMatchers("/api/rutasfav/**").authenticated()
 
                         // Acciones que requieren estar logueado (Crear, Editar, Borrar)
+                        // .requestMatchers(HttpMethod.POST, "/api/rutas/**", "/api/comentarios/**", "/api/likes/**")
+                        // .authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/rutas/**", "/api/comentarios/**", "/api/likes/**")
-                        .authenticated()
-                        .requestMatchers(HttpMethod.PUT, "/api/rutas/**", "/api/usuarios/**").authenticated()
-                        .requestMatchers(HttpMethod.DELETE, "/api/rutas/**", "/api/likes/**").authenticated()
+                        .permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/rutas/**", "/api/usuarios/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/rutas/**", "/api/likes/**").hasRole("ADMIN")
 
                         // RESTRICCIONES DE ADMIN
                         .requestMatchers("/api/usuarios/admins").hasRole("ADMIN")
