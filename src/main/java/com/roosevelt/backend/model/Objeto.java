@@ -41,8 +41,8 @@ public class Objeto implements Serializable {
 
     public enum Peligrosidad {
         Verde,
-        Amarillo,
-        Rojo
+        Amarilla,
+        Roja
     }
 
     private static final long serialVersionUID = 1L;
@@ -71,13 +71,13 @@ public class Objeto implements Serializable {
     @Column(name = "descripcion", nullable = false, unique = false)
     private String descripcion;
 
-    @Schema(description = "la imagen del Objeto", example = "./escalera_castillo.png")
+    @Schema(description = "la imagen del Objeto", example = "escalera_castillo.png")
     @NotBlank(message = "El directorio de la imagen del Objeto es obligatorio")
     @Size(min = 1, max = 50, message = "El directorio de la imagen del Objeto no puede tener más de 50 caracteres")
     @Column(name = "imagen", nullable = false, unique = false)
     private String imagen;
 
-    @Schema(description = "La peligrosidad del Objeto", example = "Amarillo")
+    @Schema(description = "La peligrosidad del Objeto", example = "Amarilla")
     @NotNull(message = "La peligrosidad del Objeto es obligatorio")
     //@Size(min = 1, max = 20, message = "La peligrosidad del Objeto no puede tener más de 20 caracteres")
     @Column(name = "peligrosidad", nullable = false, unique = false)

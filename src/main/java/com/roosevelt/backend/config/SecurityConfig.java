@@ -69,12 +69,13 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                          .requestMatchers("/api/eventos/**").permitAll()
+                          .requestMatchers("/api/objetos/**").hasRole("ADMIN")
                         .requestMatchers("/roosevelt/**").permitAll() //
                         .requestMatchers("/api/usuarios/**").permitAll()
                         // .requestMatchers("/api/rutas/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/rutas").permitAll() // Ver todas las rutas es público
                         .requestMatchers(HttpMethod.GET, "/api/zonas/**").permitAll()
-                        .requestMatchers("/api/zonas/**").hasRole("ADMIN")
+                    
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/mensajes/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/mensajes/**").hasRole("ADMIN")
@@ -87,7 +88,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/rutas/**", "/api/comentarios/**", "/api/likes/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/rutas/**", "/api/usuarios/**").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/rutas/**", "/api/likes/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/zonas/**","/api/objetos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/rutas/**", "/api/likes/**","/api/objetos/**").hasRole("ADMIN")
 
                         // RESTRICCIONES DE ADMIN
                         .requestMatchers("/api/usuarios/admins").hasRole("ADMIN")

@@ -4,16 +4,16 @@ INSERT INTO zonas (id, mapbox_json, nombre_zona, peligrosidad) VALUES (3, 'coord
 
 ALTER TABLE zonas ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM zonas);
 
-INSERT INTO tipos_objeto (id, nombre_tipo, icono) VALUES (1, 'Escalera', './escalera.png');
-INSERT INTO tipos_objeto (id, nombre_tipo, icono) VALUES (2, 'Ascensor', './ascensor.png');
-INSERT INTO tipos_objeto (id, nombre_tipo, icono) VALUES (3, 'Construcción', './construcción.png');
+INSERT INTO tipos_objeto (id, nombre_tipo, icono) VALUES (1, 'Escalera', 'assets/escalera_castillo.png');
+INSERT INTO tipos_objeto (id, nombre_tipo, icono) VALUES (2, 'Ascensor', 'assets/escalera_castillo.png');
+INSERT INTO tipos_objeto (id, nombre_tipo, icono) VALUES (3, 'Construcción', 'assets/escalera_castillo.png');
 
 ALTER TABLE tipos_objeto ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM tipos_objeto);
 
-INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (1, '[-0.481472302211273, 38.34839297758327]', 'Escalera de Castillo', 'Escalera muy grande', './escalera_castillo.png', 1, 1, 1);
-INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (2, '[-0.4803870927337073, 38.34908023870918]', 'Escalera de Castillo 2', 'Escalera muy muy grande', './escalera_castillo.png', 1, 1, 1);
-INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (3, '[-0.47735138279091416, 38.3471234043368]', 'Ascensor de Castillo', 'Ascensor muy grande', './ascensor_castillo.png', 0, 1, 2);
-INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (4, '[-0.47811194504853916, 38.35206531783055]', 'Construccion de Castillo', 'Construccion muy grande', './construccion_castillo.png', 2, 1, 3);
+INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (1, '[-0.481472302211273, 38.34839297758327]', 'Escalera de Castillo', 'Escalera muy grande', 'assets/escalera_castillo.png', 1, 1, 1);
+INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (2, '[-0.4803870927337073, 38.34908023870918]', 'Escalera de Castillo 2', 'Escalera muy muy grande', 'assets/escalera_castillo.png', 1, 1, 1);
+INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (3, '[-0.47735138279091416, 38.3471234043368]', 'Ascensor de Castillo', 'Ascensor muy grande', 'assets/escalera_castillo.png', 0, 1, 2);
+INSERT INTO objetos (id, mapbox_json, nombre_objeto, descripcion, imagen, peligrosidad, id_zona, id_tipo_objeto) VALUES (4, '[-0.47811194504853916, 38.35206531783055]', 'Construccion de Castillo', 'Construccion muy grande', 'assets/escalera_castillo.png', 2, 1, 3);
 
 ALTER TABLE objetos ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM objetos);
 
