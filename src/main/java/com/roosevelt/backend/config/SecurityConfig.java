@@ -69,7 +69,6 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                          .requestMatchers("/api/eventos/**").permitAll()
-                          .requestMatchers("/api/objetos/**").hasRole("ADMIN")
                         .requestMatchers("/roosevelt/**").permitAll() //
                         .requestMatchers("/api/usuarios/**").permitAll()
                         // .requestMatchers("/api/rutas/**").permitAll()
@@ -78,7 +77,7 @@ public class SecurityConfig {
                     
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/mensajes/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/mensajes/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/mensajes/**","/api/objetos/**").hasRole("ADMIN")
                         // Para "Rutas Favoritas" (AppRouter: /fav-routes)
                         .requestMatchers("/api/rutasfav/**").authenticated()
 
